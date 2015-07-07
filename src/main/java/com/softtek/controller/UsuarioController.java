@@ -19,15 +19,12 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	 @RequestMapping("/")
-	    public String index() {
 
-	        return "logon";
-	    }
 
-	@RequestMapping("/usuariosAlta")
+	@RequestMapping({"/usuariosAlta","/index","/"})
 	public String setupForm(Map<String, Object>map)
 	{
+		
 		Usuario usuario = new Usuario();
 		map.put("usuario", usuario);
 		map.put("usuarioList", usuarioService.getAllUsuario());
@@ -62,21 +59,4 @@ public class UsuarioController {
 		return "usuario"; 
 	}
 	
-	 @RequestMapping("/request")
-	    public String request() {
-
-	        return "request";
-	    }
-	
-	 @RequestMapping("/logon")
-	    public String Logon() {
-
-	        return "logon";
-	    }
-	 
-	 @RequestMapping("/mainmenu")
-	    public String Main_Menu() {
-
-	        return "main_menu";
-	    }
 }

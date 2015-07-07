@@ -9,7 +9,7 @@
 -->
 <html>
 <head>
-<title>GateKeeper Logon</title>
+<title>Login</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="<spring:url value='js/ie/html5shiv.js' />"></script><![endif]-->
@@ -28,25 +28,51 @@
 		<section id="contact" class="four" style="height: 600px;">
 			<div class="container">
 
-				<header>
-					<h2>Gatekeeper</h2>
-					<a href="logout"><spring:message code="user.logout" /></a>
+
+<form action="j_spring_security_check" method="POST">
+ 
+<table>
+<tr>
+<td>User:</td>
+<td><input type='text' name='j_username' value=''>
+</td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type='password' name='j_password' />
+</td>
+</tr>
+<tr>
+<td>
+<input type="submit" value="Login" />
+<font color="red">
+					<span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span>
+				</font>
+</td>
+</tr>
+</table>
+ 
+</form>
+				
+				
+				
+				
+				
+						<!-- Spring Security start 
+										<header>
+					<h2>who are you?...</h2>
+					<a href="logout"><spring:message code="user.logout"/></a>
 				</header>
 
-
-
-
-
-<!--  -->				<form method="post" action="j_spring_security_check">
+				<form action="j_spring_security_check" method="POST">
 					<div class="row">
-						<div class="6u 12u$(mobile)"
-							style="margin-left: 250px; margin-top: 50px;">
-							<input type="text" name="j_username" placeholder="Softtek IS" />
+						<div class="6u 12u$(mobile)" style="margin-left: 250px; margin-top: 50px;">
+							<input type="text" name="j_username" placeholder="username" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="6u$ 12u$(mobile)" style="margin-left: 250px;">
-							<input type="password" name="j_password" placeholder="Contraseña" />
+							<input type="password" name="j_password" placeholder="password" />
 						</div>
 					</div>
 					<div class="row">
@@ -55,6 +81,11 @@
 						</div>
 					</div>
 				</form>
+				<font color="red">
+					<span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span>
+				</font>
+										
+						 Spring Security ends -->
 
 			</div>
 		</section>

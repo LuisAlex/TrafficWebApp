@@ -14,6 +14,8 @@ public interface UsuarioDao {
 	public Usuario getUsuario(int usuarioId);
 
 	public Usuario getUsuarioByIs(String softtekIs);
+	
+	public Usuario getUsuarioByCrite(String softtekIs);
 
 	public List getAllUsuario();
 

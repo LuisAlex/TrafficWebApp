@@ -19,11 +19,6 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 
-	// @RequestMapping("/")
-	// public String index() {
-	// return "index";
-	// }
-
 	@RequestMapping("/rolesAlta")
 	public String setupForm(Map<String, Object> map) {
 		Role role = new Role();

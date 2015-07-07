@@ -2,8 +2,10 @@ package com.softtek.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -50,6 +52,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	public List getAllUsuario() {
 		
 		return session.getCurrentSession().createQuery("from Usuario").list();
+	}
+
+	@Override
+	public Usuario getUsuarioByCrite(String softtekIs) {
+		Criteria criteria = session.getCurrentSession().createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("softtekIs", softtekIs));
+		return (Usuario) criteria.uniqueResult();
 	}
 
 }

@@ -6,6 +6,6 @@
 <hibernate-configuration>
     <session-factory>        
         <mapping class="com.softtek.model.Usuario" />
-        <mapping class="com.softtek.model.Role" />
+        <mapping class="com.softtek.model.Role" />       
     </session-factory>         
 </hibernate-configuration>
