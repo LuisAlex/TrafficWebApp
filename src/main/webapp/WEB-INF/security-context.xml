@@ -5,16 +5,20 @@
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http pattern="/resources/**" security="none"/>
-	<http pattern="/login" security="none" />
+	<http pattern="/resources/**" security="none" />
+<!-- 	<http pattern="/login" security="none" /> -->
 	<http use-expressions="true">
+		<intercept-url pattern="/login*" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-			<session-management invalid-session-url="/login" session-fixation-protection="newSession" >
-			   <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" /> 
-			</session-management>
+		<session-management invalid-session-url="/login"
+			session-fixation-protection="newSession">
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
 		<form-login login-page="/login" default-target-url="/index"
 			authentication-failure-url="/login" />
-		<logout logout-url="/logout" logout-success-url="/index" delete-cookies="JSESSIONID"/>
+		<logout logout-url="/logout" logout-success-url="/index"
+			delete-cookies="JSESSIONID" />
 	</http>
 
 	<beans:bean id="daoAuthenticationProvider"
@@ -36,11 +40,11 @@
 			<password-encoder hash="md5"></password-encoder>
 		</authentication-provider>
 	</authentication-manager>
-	
-<authentication-manager>
-    <authentication-provider user-service-ref="myUserDetailsService" >
-        <password-encoder hash="md5" />    
-    </authentication-provider>
-</authentication-manager>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="myUserDetailsService">
+			<password-encoder hash="md5" />
+		</authentication-provider>
+	</authentication-manager>
 
 </beans:beans>

@@ -19,7 +19,7 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 
-	@RequestMapping("/rolesAlta")
+	@RequestMapping("/addRole")
 	public String setupForm(Map<String, Object> map) {
 		Role role = new Role();
 		map.put("role", role);
